@@ -4,24 +4,18 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Parent1 from './components/Parent1'
 import Parent2 from './components/Parent2'
-import  MessageContext from './context/messageContext'
+import  {MessageProvider} from './context/messageContext'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  const [newMessage, setNewMessage] = useState('Namaste');
-
-  const newMessageHandler = (msg)=>{
-    setNewMessage(msg)
-  }
+  
 
   return (
     <>
-      <Parent1 />
 
-      <MessageContext.Provider value={{newMessage, newMessageHandler}}>
-        <Parent2 />
-      </MessageContext.Provider>  
+        <MessageProvider>
+          <Parent1 />
+          <Parent2 />
+        </MessageProvider>      
     </>
   )
 }
